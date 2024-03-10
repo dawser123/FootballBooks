@@ -15,12 +15,12 @@ FootballBooks is a web application that enables users to explore books related t
 - Responsive Design: The application is optimized for both desktop and mobile devices.
 - User Authentication: Secure user authentication system to manage user accounts.
 ### Technologies Used
-  -React
-  -React Router
-  -Axios
-  -Google Books API
-  -Tailwind
-  -Vite
+  - React
+  - React Router
+  - Axios
+  - Google Books API
+  - Tailwind
+  - Vite
 ### Login Details
 Sample login details, please enter them into the log-in panel in order to use this app:
 
