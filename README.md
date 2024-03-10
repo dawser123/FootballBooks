@@ -24,5 +24,5 @@ FootballBooks is a web application that enables users to explore books related t
 ### Login Details
 Please use the following sample login credentials to access the application:
 
-login: test@gmail.com
-password: 1234567
+ - login: test@gmail.com
+ - password: 1234567
