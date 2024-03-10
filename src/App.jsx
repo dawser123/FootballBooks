@@ -7,7 +7,7 @@ import Contact from "./views/Contact";
 import Login from "./views/Login";
 import LeagueCard from "./components/LeagueCard";
 import BookDetails from "./components/BookDetails";
-import ScrollTo from "./components/utils/ScrollTo";
+import ScrollTo from "./components/utils/scrollTo"
 import { FavoriteContextProvider } from "./components/contexts/FavoriteContext";
 import { AuthContextProvider } from "./components/contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
