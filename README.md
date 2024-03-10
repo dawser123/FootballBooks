@@ -22,7 +22,7 @@ FootballBooks is a web application that enables users to explore books related t
   - Tailwind
   - Vite
 ### Login Details
-Sample login details, please enter them into the log-in panel in order to use this app:
+Please use the following sample login credentials to access the application:
 
 login: test@gmail.com
 password: 1234567
