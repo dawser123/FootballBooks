@@ -9,6 +9,12 @@ FootballBooks is a web application that enables users to explore books related t
  ## Overview
  ### Links
 - Live Site URL: [live site URL here](https://football-books.vercel.app/)
+ ### Login Details
+Please use the following sample login credentials to access the application:
+
+ - login: test@gmail.com
+ - password: 1234567
+
  ### Features
 - Browse: Explore popular and newest books about football.
 - Favorites: Users can create an account to save their favorite books for later reference.
@@ -21,8 +27,3 @@ FootballBooks is a web application that enables users to explore books related t
   - Google Books API
   - Tailwind
   - Vite
-### Login Details
-Please use the following sample login credentials to access the application:
-
- - login: test@gmail.com
- - password: 1234567
