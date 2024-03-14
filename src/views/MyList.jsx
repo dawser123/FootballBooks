@@ -6,7 +6,6 @@ import AuthContext from "../components/contexts/AuthContext";
 const MyList = () => {
   const favoriteContext = useContext(FavoriteContext);
   const authContext = useContext(AuthContext);
-  console.log(authContext);
   return (
     <>
       {authContext.loggedIn ? (

@@ -3,8 +3,8 @@ import requests from "../Requests";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Book from "./Book";
-import leagueHeading from "./utils/leagueName";
 import DataLoadingMessage from "./DataLoadingMessage";
+import { leagueHeading } from "./utils/leagueName";
 const LeagueCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [books, setBooks] = useState([]);

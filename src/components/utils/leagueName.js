@@ -1,4 +1,4 @@
-function leagueHeading(leagueName) {
+export function leagueHeading(leagueName) {
   switch (true) {
     case leagueName == "premierleague":
       return "Premier League";
@@ -14,4 +14,11 @@ function leagueHeading(leagueName) {
       return;
   }
 }
-export default leagueHeading;
+
+export const leagues = [
+  "premierleague",
+  "laliga",
+  "seria",
+  "bundesliga",
+  "ligue1",
+];

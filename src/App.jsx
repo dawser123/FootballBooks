@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import MainPage from "./views/MainPage";
@@ -7,10 +7,12 @@ import Contact from "./views/Contact";
 import Login from "./views/Login";
 import LeagueCard from "./components/LeagueCard";
 import BookDetails from "./components/BookDetails";
-import ScrollTo from "./components/utils/scrollTo"
+import ScrollTo from "./components/utils/scrollTo";
 import { FavoriteContextProvider } from "./components/contexts/FavoriteContext";
 import { AuthContextProvider } from "./components/contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedLeagueCard from "./components/ProtectedLeagueCard";
+import ErrorPage from "./components/ErrorPage";
 function App() {
   return (
     <FavoriteContextProvider>
@@ -30,11 +32,18 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
-            <Route path="/:league" element={<LeagueCard />}>
+            <Route
+              path="/:league"
+              element={
+                <ProtectedLeagueCard>
+                  <LeagueCard />
+                </ProtectedLeagueCard>
+              }
+            >
               <Route path=":bookId/:title" element={<BookDetails />} />
             </Route>
-            <Route path="/:bookId/:title" element={<BookDetails />}>
-            </Route>
+            <Route path="/:bookId/:title" element={<BookDetails />}></Route>
+            <Route path="/*" element={<ErrorPage />}></Route>
           </Routes>
         </div>
         <Footer />

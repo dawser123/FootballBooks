@@ -35,7 +35,7 @@ const Navbar = () => {
             <h1 className="text-xl text-primary-text-color ">FootballBooks</h1>
           </Link>
         </div>
-        <div className="flex gap-2 text-xl">
+        <div className="flex items-center gap-2 text-xl">
           <NavigationLinks />
           <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           {isOpen && <Backdrop onClick={() => setIsOpen(false)} />}
