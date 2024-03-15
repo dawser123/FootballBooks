@@ -3,17 +3,26 @@ import { NavLink } from "react-router-dom";
 const NavLinksList = () => {
   return (
     <>
-      <NavLink className="duration-300 hover:text-primary-color-hover" to="/">
+      <NavLink
+        className={({ isActive }) =>
+        isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
+      }
+        to="/"
+      >
         Home
       </NavLink>
       <NavLink
-        className="duration-300 hover:text-primary-color-hover"
+        className={({ isActive }) =>
+          isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
+        }
         to="/my-list"
       >
         My list
       </NavLink>
       <NavLink
-        className="duration-300 hover:text-primary-color-hover"
+        className={({ isActive }) =>
+        isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
+      }
         to="/contact"
       >
         Contact

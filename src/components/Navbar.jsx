@@ -35,13 +35,13 @@ const Navbar = () => {
             <h1 className="text-xl text-primary-text-color ">FootballBooks</h1>
           </Link>
         </div>
-        <div className="flex items-center gap-2 text-xl">
+        <div className="flex items-center justify-center gap-4 text-xl">
           <NavigationLinks />
           <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           {isOpen && <Backdrop onClick={() => setIsOpen(false)} />}
           {user.user.email ? (
             <Link
-              className="text-2xl text-primary-text-color duration-300 hover:text-primary-color-hover "
+              className="text-2xl text-primary-text-color hover:text-opacity-70"
               to="/"
               onClick={handleLogout}
             >
@@ -49,7 +49,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <Link
-              className="text-2xl text-primary-text-color  duration-300 hover:text-primary-color-hover "
+              className="text-2xl text-primary-text-color hover:text-opacity-70  "
               to="/login"
             >
               Login
