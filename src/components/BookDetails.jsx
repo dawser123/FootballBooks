@@ -31,8 +31,8 @@ const BookDetails = () => {
   };
   return (
     <>
-      <div className="flex flex-col">
-        <div className="mx-auto flex flex-col gap-5">
+      <div className="flex flex-col mt-10 ">
+        <div className="mx-auto flex flex-col gap-5 ">
           <img
             className="h-[250px] w-[200px] object-fill text-primary-text-color opacity-80"
             src={`${img ? img : ball}`}
