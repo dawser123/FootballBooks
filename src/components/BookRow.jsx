@@ -77,7 +77,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
               })}
               <MdOutlineKeyboardArrowRight
                 onClick={() => scrollBySmooth(300)}
-                className="absolute right-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
+                className="absolute right-1 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
               />
             </>
           ) : (
