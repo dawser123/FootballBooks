@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import MainPage from "./views/MainPage";
@@ -18,7 +18,7 @@ function App() {
     <FavoriteContextProvider>
       <AuthContextProvider>
         <ScrollTo />
-        <Navbar />
+        <Navbar/>
         <div className="mt-[5rem] h-full">
           <Routes>
             <Route path="/" element={<MainPage />}></Route>
@@ -31,7 +31,7 @@ function App() {
                   <Login />
                 </ProtectedRoute>
               }
-            ></Route>
+              ></Route>
             <Route
               path="/:league"
               element={
@@ -39,7 +39,7 @@ function App() {
                   <LeagueCard />
                 </ProtectedLeagueCard>
               }
-            >
+              >
               <Route path=":bookId/:title" element={<BookDetails />} />
             </Route>
             <Route path="/:bookId/:title" element={<BookDetails />}></Route>

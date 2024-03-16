@@ -1,27 +1,33 @@
 import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import Icon from "./Icon";
 import MobileMenu from "./MobileMenu";
 import NavigationLinks from "./NavigationLinks";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import LogoutConfirmation from "./LogoutConfirmation";
 import Backdrop from "./UI/Backdrop";
 import AuthContext from "./contexts/AuthContext";
-import LogoutConfirmation from "./LogoutConfirmation";
+import Modal from "./UI/Modal";
+import Button from "./UI/Button";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalConfirmatioOpen, setIsModalConfirmationOpen] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
   const user = useContext(AuthContext);
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    setShowLogoutConfirmation(true);
+  const handleModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
   const confirmLogout = () => {
     navigate("/");
     user.setUser({});
     user.setLoggedIn(false);
-    setShowLogoutConfirmation(false);
+    setIsModalOpen(false)
+    setIsModalConfirmationOpen(true)
   };
   useEffect(() => {
     setIsOpen(false);
@@ -40,13 +46,12 @@ const Navbar = () => {
           <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           {isOpen && <Backdrop onClick={() => setIsOpen(false)} />}
           {user.user.email ? (
-            <Link
+            <button
               className="text-2xl text-primary-text-color hover:text-opacity-70"
-              to="/"
-              onClick={handleLogout}
+              onClick={handleModal}
             >
               Logout
-            </Link>
+            </button>
           ) : (
             <Link
               className="text-2xl text-primary-text-color hover:text-opacity-70  "
@@ -58,11 +63,29 @@ const Navbar = () => {
         </div>
       </div>
       <MobileMenu isOpen={isOpen} />
-      {showLogoutConfirmation && (
+      {isModalOpen ? (
+        <Modal
+          className="px-2 "
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          title={"Are you sure you want to log out ?"}
+        >
+          <div className="flex gap-2 text-lg font-bold">
+            <Button onClick={confirmLogout} className="rounded-xl px-3 py-2">
+              Logout
+            </Button>
+            <Button
+              onClick={handleCloseModal}
+              className="rounded-xl px-3 py-2"
+            >
+              Cancel
+            </Button>
+          </div>
+        </Modal>
+      ) : (
         <LogoutConfirmation
-          isOpen={showLogoutConfirmation}
-          onClose={() => setShowLogoutConfirmation(false)}
-          onConfirm={confirmLogout}
+          isOpen={isModalConfirmatioOpen}
+          onClose={setIsModalConfirmationOpen}
         />
       )}
     </>
