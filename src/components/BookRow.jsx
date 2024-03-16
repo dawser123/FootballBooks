@@ -7,6 +7,7 @@ import {
 import Book from "./Book";
 import { Link } from "react-router-dom";
 import DataLoadingMessage from "./DataLoadingMessage";
+import MarginLeftContainer from "./UI/MarginLeftContainer";
 const BookRow = ({ rowID, fetchURL, title }) => {
   const [books, setBooks] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -34,21 +35,23 @@ const BookRow = ({ rowID, fetchURL, title }) => {
   };
   return (
     <div className="relative">
-      <h2 className="py-5 pl-3 text-lg font-bold text-primary-text-color md:pl-8 md:text-xl lg:text-xl">
-        {title}
-      </h2>
+      <MarginLeftContainer>
+        <h2 className="py-5 text-lg font-bold text-primary-text-color md:text-xl lg:text-xl">
+          {title}
+        </h2>
+      </MarginLeftContainer>
       <div
         id={"slice" + rowID}
-        className="flex flex-col items-start justify-center overflow-x-hidden"
+        className="flex flex-col items-start justify-center overflow-x-hidden sm:pl-8"
         onScroll={handleScroll}
         ref={sliceRef}
       >
-        <div className="mx-auto h-64 w-full whitespace-nowrap ">
+        <div className="mx-auto h-56 w-full whitespace-nowrap ">
           {!isLoading ? (
             <>
               <MdOutlineKeyboardArrowLeft
                 onClick={() => scrollBySmooth(-300)}
-                className="absolute left-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110 md:text-4xl "
+                className="absolute left-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
               />
               {books.map((item, index) => {
                 return (
@@ -74,7 +77,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
               })}
               <MdOutlineKeyboardArrowRight
                 onClick={() => scrollBySmooth(300)}
-                className="absolute right-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110 md:text-4xl  "
+                className="absolute right-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
               />
             </>
           ) : (

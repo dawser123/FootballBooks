@@ -10,7 +10,7 @@ const MainPage = () => {
         Top Five Leagues
       </h2>
       <TopFiveLeagues />
-      <div id="bookrow">
+      <div id="bookrow" >
         <BookRow
           rowID="1"title="Popular books" fetchURL={requests.requestPopular}
         />
