@@ -1,24 +1,32 @@
 import Icon from "./Icon";
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Newsletter from "./Newsletter";
+import FooterLinks from "./FooterLinks";
+import { categories } from "./utils/LinksCategory";
+
 const Footer = () => {
   const [isNewsletterShown, setIsNewsletterShown] = useState(false);
   const [isSubscriptionSuccess, setIsSubscriptionSuccess] = useState(false);
+
   return (
-    <footer className="mt-auto bg-primary-color py-6">
-      <div className="mx-auto flex items-center justify-between lg:max-w-[45%]">
-        <Icon className="mx-auto w-28" />
-        <ul className="mx-auto flex flex-col gap-4 text-primary-text-color md:flex-row text-lg ">
-          <NavLink className='hover:text-primary-color-hover duration-300  ' to="/contact">Contact</NavLink>
+    <footer className="mt-auto bg-primary-color py-10">
+      <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:items-start sm:px-3">
+        <Icon className="hidden w-28 sm:block" />
+        <div className="text-center">
+          <h2 className="mb-5 text-2xl font-bold text-primary-text-color">
+            Newsletter
+          </h2>
           <li
             aria-label="Open Newsletter"
-            className="cursor-pointer hover:text-primary-color-hover duration-300  "
+            className="cursor-pointer list-none text-primary-text-color duration-300 hover:text-primary-color-hover"
             onClick={() => setIsNewsletterShown(true)}
           >
-            Newsletter
+            Subscribe to Newsletter
           </li>
-        </ul>
+        </div>
+        {categories.map((category, index) => (
+          <FooterLinks key={index} category={category} />
+        ))}
       </div>
       {isNewsletterShown && (
         <Newsletter
@@ -31,4 +39,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;
