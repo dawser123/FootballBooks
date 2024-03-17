@@ -26,7 +26,7 @@ const Contact = () => {
       <h2 className="mb-5 py-5 text-center text-2xl text-primary-text-color">
         Contact us
       </h2>
-      <div className="mx-auto flex flex-col items-center justify-center gap-5 md:flex-row md:px-8 lg:max-w-[80%]  ">
+      <div className="mx-auto flex flex-col items-center justify-center gap-5 md:flex-row md:px-8 mb-10 lg:max-w-[80%]  ">
         <form
           className="w-full max-w-[90%] sm:max-w-[70%]"
           noValidate
