@@ -14,6 +14,22 @@ export function leagueHeading(leagueName) {
       return;
   }
 }
+export function leagueToNationality(leagueName) {
+  switch (true) {
+    case leagueName == "premierleague":
+      return "england";
+    case leagueName == "laliga":
+      return "spain";
+    case leagueName == "seria":
+      return "italy";
+    case leagueName == "bundesliga":
+      return "germany";
+    case leagueName == "ligue1":
+      return "france";
+    default:
+      return;
+  }
+}
 
 export const leagues = [
   "premierleague",

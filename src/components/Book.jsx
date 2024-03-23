@@ -11,7 +11,7 @@ const Book = ({ title, img, index, deleteBtn, id }) => {
     <div className={`inline-block ${index !== 0 && "mx-1"}`}>
       <div className="relative h-[200px] min-w-[150px] max-w-[150px] cursor-pointer ">
         <img
-          className="h-full w-full overflow-hidden rounded-xl object-cover  text-primary-text-color  "
+          className="h-full w-full overflow-hidden rounded-xl  text-primary-text-color  "
           src={`${img ? img : ball}`}
           alt={title}
         />

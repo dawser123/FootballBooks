@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Book from "./Book";
 import DataLoadingMessage from "./DataLoadingMessage";
-import { leagueHeading } from "./utils/leagueName";
+import { leagueHeading, leagueToNationality } from "./utils/leagueName";
 const LeagueCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [books, setBooks] = useState([]);
@@ -14,7 +14,7 @@ const LeagueCard = () => {
     setIsLoading(true);
     const fetchURL = requests.requestPopularByLeague.replace(
       "{league}",
-      league,
+      leagueToNationality(league),
     );
     axios.get(fetchURL).then((response) => {
       setBooks(response.data.items);
@@ -43,6 +43,13 @@ const LeagueCard = () => {
                   img: item.volumeInfo.imageLinks?.thumbnail,
                   author: item.volumeInfo.authors,
                   description: item.volumeInfo.description,
+                  bookDetails: {
+                    publisher: item.volumeInfo.publisher,
+                    publishedDate: item.volumeInfo.publishedDate,
+                    industryIdentifiers: item.volumeInfo.industryIdentifiers,
+                    language: item.volumeInfo.language,
+                    saleInfo:item.saleInfo.buyLink
+                  },
                 }}
               >
                 <Book

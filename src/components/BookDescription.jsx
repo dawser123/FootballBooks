@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
-const BookDescription = ({ author, description, title }) => {
+const BookDescription = ({ bookDetails }) => {
   const [showMoreText, setShowMoreText] = useState(false);
   const truncateString = (str, num) => {
     if (str.length > num && !showMoreText) {
@@ -14,21 +14,19 @@ const BookDescription = ({ author, description, title }) => {
     setShowMoreText(!showMoreText);
   };
   return (
-    <>
-      <article className="mx-auto my-10 flex  flex-col justify-center gap-5 px-5 text-primary-text-color sm:px-8 md:w-[70%] ">
-        <h2 className="font-bold">
-          Title:
-          <span className="ml-2 font-normal">{title} </span>
-        </h2>
+    <div className="flex flex-col md:w-[80%]">
+      <article className="mx-auto mb-20 mt-10 flex flex-col justify-center gap-5 px-5 text-primary-text-color sm:px-8 md:w-[70%] ">
+        <span className="font-bold">{bookDetails.title} </span>
         <p className="font-bold ">
-          Author:<span className="ml-2 font-normal">{author[0]}</span>
+          Author:
+          <span className="ml-2 font-normal">{bookDetails.author[0]}</span>
         </p>
         <div className="font-bold">
           Description:
           <p className="mt-2  font-normal">
-            {truncateString(description, 200)}
+            {truncateString(bookDetails.description, 200)}
           </p>
-          {description.length > 200 && (
+          {bookDetails.description.length > 200 && (
             <button className="mt-2 w-full" onClick={toggleShowMoreText}>
               {showMoreText ? (
                 <div className="flex items-center justify-center gap-2">
@@ -45,7 +43,7 @@ const BookDescription = ({ author, description, title }) => {
           )}
         </div>
       </article>
-    </>
+    </div>
   );
 };
 export default BookDescription;

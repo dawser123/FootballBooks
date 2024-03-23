@@ -12,7 +12,7 @@ const TopFiveLeagues = () => {
         <LeagueIcon league="premierleague" url={PremiereLeague} />
       </Link>
       <Link to="/laliga">
-        <LeagueIcon league="laliga" url={LaLiga} />
+        <LeagueIcon league="spain" url={LaLiga} />
       </Link>
       <Link to="/seria">
         <LeagueIcon league="seria" url={SerieA} />

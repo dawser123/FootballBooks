@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -8,11 +8,10 @@ import Book from "./Book";
 import { Link } from "react-router-dom";
 import DataLoadingMessage from "./DataLoadingMessage";
 import MarginLeftContainer from "./UI/MarginLeftContainer";
+import { slideLeft, slideRight } from "./utils/slider";
 const BookRow = ({ rowID, fetchURL, title }) => {
   const [books, setBooks] = useState([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const sliceRef = useRef(null);
   useEffect(() => {
     setIsLoading(true);
     axios.get(fetchURL).then((response) => {
@@ -20,21 +19,14 @@ const BookRow = ({ rowID, fetchURL, title }) => {
       setIsLoading(false);
     });
   }, [fetchURL]);
-  const scrollBySmooth = (scrollOffset) => {
-    if (sliceRef.current) {
-      sliceRef.current.scrollTo({
-        left: scrollPosition + scrollOffset,
-        behavior: "smooth",
-      });
-    }
+  const handleSlideLeft = () => {
+    slideLeft("slice" + rowID, 300);
   };
-  const handleScroll = () => {
-    if (sliceRef.current) {
-      setScrollPosition(sliceRef.current.scrollLeft);
-    }
+  const handleSlideRight = () => {
+    slideRight("slice" + rowID, 300);
   };
   return (
-    <div className="relative">
+    <div className="bg relative">
       <MarginLeftContainer>
         <h2 className="py-5 text-lg font-bold text-primary-text-color md:text-xl lg:text-xl">
           {title}
@@ -43,14 +35,12 @@ const BookRow = ({ rowID, fetchURL, title }) => {
       <div
         id={"slice" + rowID}
         className="flex flex-col items-start justify-center overflow-x-hidden sm:pl-8"
-        onScroll={handleScroll}
-        ref={sliceRef}
       >
-        <div className="mx-auto h-56 w-full whitespace-nowrap ">
+        <div className="  mx-auto h-56 w-full whitespace-nowrap ">
           {!isLoading ? (
             <>
               <MdOutlineKeyboardArrowLeft
-                onClick={() => scrollBySmooth(-300)}
+                onClick={handleSlideLeft}
                 className="absolute left-0 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
               />
               {books.map((item, index) => {
@@ -64,6 +54,14 @@ const BookRow = ({ rowID, fetchURL, title }) => {
                       img: item.volumeInfo.imageLinks?.thumbnail,
                       author: item.volumeInfo.authors,
                       description: item.volumeInfo.description,
+                      bookDetails: {
+                        publisher: item.volumeInfo.publisher,
+                        publishedDate: item.volumeInfo.publishedDate,
+                        industryIdentifiers:
+                          item.volumeInfo.industryIdentifiers,
+                        language: item.volumeInfo.language,
+                        saleInfo: item.saleInfo.buyLink,
+                      },
                     }}
                   >
                     <Book
@@ -76,7 +74,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
                 );
               })}
               <MdOutlineKeyboardArrowRight
-                onClick={() => scrollBySmooth(300)}
+                onClick={handleSlideRight}
                 className="absolute right-1 top-[50%] z-10 cursor-pointer rounded-full bg-primary-color text-3xl text-primary-text-color duration-300 hover:scale-110  "
               />
             </>
