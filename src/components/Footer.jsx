@@ -3,13 +3,11 @@ import { useState } from "react";
 import Newsletter from "./Newsletter";
 import FooterLinks from "./FooterLinks";
 import { categories } from "./utils/LinksCategory";
-
 const Footer = () => {
   const [isNewsletterShown, setIsNewsletterShown] = useState(false);
   const [isSubscriptionSuccess, setIsSubscriptionSuccess] = useState(false);
-
   return (
-    <footer className="mt-auto bg-primary-color py-10">
+    <footer  className="mt-auto bg-primary-color py-10">
       <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:items-start sm:px-3">
         <Icon className="hidden w-28 sm:block" />
         <div className="text-center">
@@ -39,5 +37,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;

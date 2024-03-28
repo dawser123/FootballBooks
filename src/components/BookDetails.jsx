@@ -1,18 +1,33 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Button from "./UI/Button";
 import Modal from "../components/UI/Modal";
 import BookDescription from "./BookDescription";
 import BookActionButton from "./BookActionButton";
 import BookDetailListItem from "./BookDetailListItem";
+import { leagueHeading } from "./utils/leagueName";
+import Breadcrumbs from "./Breadcrumbs";
 const BookDetails = () => {
   const location = useLocation();
+  const { league } = useParams();
   const [errorMsg, setErrorMsg] = useState(false);
+  const navigationData = league
+    ? [
+        { url: "/#topfiveleagues", title: "Top five leagues" },
+        { url: `/${league}`, title: leagueHeading(league) },
+      ]
+    : [
+        {
+          url: `/#${location.state.categoryId}`,
+          title: `Back to ${location.state.category}`,
+        },
+      ];
   const handleModal = () => {
     setErrorMsg(false);
   };
   return (
     <>
+      <Breadcrumbs navigationData={navigationData} />;
       <div className="mt-10 flex flex-col items-center justify-center">
         <BookActionButton setErrorMsg={setErrorMsg} />
         <BookDescription bookDetails={location.state} />
@@ -36,7 +51,7 @@ const BookDetails = () => {
             <Button
               onClick={handleModal}
               className="w-48 rounded-2xl px-10 py-3 sm:max-w-32"
-            >   
+            >
               Close
             </Button>
           </div>

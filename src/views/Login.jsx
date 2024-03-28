@@ -23,11 +23,11 @@ const Login = () => {
     user.setLoggedIn(true);
   };
   return (
-    <div>
+    <>
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto mt-32 md:max-w-[50%]"
+        className="mx-auto my-32 md:max-w-[50%]"
       >
         <div className="mx-auto  w-[80%] rounded-xl bg-secondary-color py-5">
           <h2 className="text-center text-xl text-primary-text-color">
@@ -76,11 +76,8 @@ const Login = () => {
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 export default Login;
-
-
-
 // komunukat czy na pewno chcesz sie wylogowac!!!!!!!

@@ -6,7 +6,7 @@ const BookDetailListItem = ({ bookDetails }) => {
   const toggleShowInfo = () => {
     setTimeout(() => {
       setShowInfo((prevState) => !prevState);
-    }, 100);
+    }, 200);
   };
   return (
     <div className="my-10 w-full px-5 md:px-8 ">
@@ -35,6 +35,14 @@ const BookDetailListItem = ({ bookDetails }) => {
                 </li>
               </div>
               <div className="flex w-full items-center justify-between gap-2">
+                <span>Page Count</span>
+                <li className="text-right font-bold">
+                  {bookDetails.bookDetails.pageCount
+                    ? bookDetails.bookDetails.pageCount
+                    : "Data not available"}
+                </li>
+              </div>
+              <div className="flex w-full items-center justify-between gap-2">
                 <span>Publication date</span>
                 <li className="text-right font-bold">
                   {bookDetails.bookDetails.publishedDate
@@ -44,10 +52,10 @@ const BookDetailListItem = ({ bookDetails }) => {
               </div>
               <div className="flex w-full items-center justify-between gap-2">
                 <span>ISBN_13</span>
-         <li className="text-right font-bold">
+                <li className="text-right font-bold">
                   {bookDetails.bookDetails.industryIdentifiers[0]?.identifier
                     ? bookDetails.bookDetails.industryIdentifiers[0]?.identifier
-                    : "ISBN_13 date not available"}
+                    : "Data not available"}
                 </li>
               </div>
               <div className="flex w-full items-center justify-between gap-2">
@@ -55,26 +63,28 @@ const BookDetailListItem = ({ bookDetails }) => {
                 <li className="text-right font-bold">
                   {bookDetails.bookDetails.industryIdentifiers[1]?.identifier
                     ? bookDetails.bookDetails.industryIdentifiers[1]?.identifier
-                    : "ISBN_10 date not available"}
+                    : "Data not available"}
                 </li>
               </div>
-              <div className="flex w-full items-center justify-between gap-2">
-                <span>Available to buy</span>
-                <li className="text-right font-bold">
-                  {bookDetails.bookDetails?.saleInfo ? (
-                    <a
-                      className="cursor-pointer duration-300 hover:text-primary-color-hover"
-                      href={bookDetails.bookDetails?.saleInfo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Sale Link
-                    </a>
-                  ) : (
-                    "Not available to buy"
-                  )}
-                </li>
-              </div>
+              {bookDetails.bookDetails?.saleInfo && (
+                <div className="flex w-full items-center justify-between gap-2">
+                  <span>Available to buy</span>
+                  <li className="text-right font-bold">
+                    {bookDetails.bookDetails?.saleInfo ? (
+                      <a
+                        className="cursor-pointer duration-300 hover:text-primary-color-hover"
+                        href={bookDetails.bookDetails?.saleInfo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Sale Link
+                      </a>
+                    ) : (
+                      "Not available to buy"
+                    )}
+                  </li>
+                </div>
+              )}
             </ul>
           </div>
         </div>

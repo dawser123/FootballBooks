@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
 import TopFiveLeagues from "../components/TopFiveLeagues";
 import BookRow from "../components/BookRow";
-import requests from "../Requests";
+import requests from "../components/utils/requests";
 const MainPage = () => {
   return (
     <main>
@@ -10,12 +10,17 @@ const MainPage = () => {
         Top Five Leagues
       </h2>
       <TopFiveLeagues />
-      <div id="bookrow" >
-        <BookRow
-          rowID="1"title="Popular books" fetchURL={requests.requestPopular}
-        />
-        <BookRow rowID="2" title="Newest" fetchURL={requests.requestNewest} />
-      </div>
+      <BookRow
+        rowID="popularBooks"
+        title="Popular books"
+        fetchURL={requests.requestPopular}
+      />
+      <BookRow
+        rowID="newest"
+        title="Newest"
+        fetchURL={requests.requestNewest}
+      />
+      <div></div>
     </main>
   );
 };

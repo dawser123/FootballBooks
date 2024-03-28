@@ -7,20 +7,20 @@ import LeagueIcon from "./LeagueIcon";
 import { Link } from "react-router-dom";
 const TopFiveLeagues = () => {
   return (
-    <div className="mx-auto flex w-72 flex-wrap items-center justify-center gap-5 md:w-full ">
-      <Link to="/premierleague">
+    <div id="topfiveleagues"  className="mx-auto flex w-72 flex-wrap items-center justify-center gap-5 md:w-full ">
+      <Link to="/premierleague" state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="premierleague" url={PremiereLeague} />
       </Link>
-      <Link to="/laliga">
+      <Link to="/laliga  " state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="spain" url={LaLiga} />
       </Link>
-      <Link to="/seria">
+      <Link to="/seria" state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="seria" url={SerieA} />
       </Link>
-      <Link to="/bundesliga">
+      <Link to="/bundesliga" state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="bundesliga" url={Bundesliga} />
       </Link>
-      <Link to="/ligue1">
+      <Link to="/ligue1" state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="ligue1" url={Ligue1} />
       </Link>
     </div>

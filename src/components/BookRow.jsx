@@ -26,7 +26,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
     slideRight("slice" + rowID, 300);
   };
   return (
-    <div className="bg relative">
+    <div id={rowID} className="bg relative">
       <MarginLeftContainer>
         <h2 className="py-5 text-lg font-bold text-primary-text-color md:text-xl lg:text-xl">
           {title}
@@ -50,6 +50,8 @@ const BookRow = ({ rowID, fetchURL, title }) => {
                     key={item.id}
                     to={`/${item.id}/${item.volumeInfo.title}`}
                     state={{
+                      category: title,
+                      categoryId: rowID,
                       title: item.volumeInfo.title,
                       img: item.volumeInfo.imageLinks?.thumbnail,
                       author: item.volumeInfo.authors,
@@ -57,6 +59,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
                       bookDetails: {
                         publisher: item.volumeInfo.publisher,
                         publishedDate: item.volumeInfo.publishedDate,
+                        pageCount: item.volumeInfo.pageCount,
                         industryIdentifiers:
                           item.volumeInfo.industryIdentifiers,
                         language: item.volumeInfo.language,
