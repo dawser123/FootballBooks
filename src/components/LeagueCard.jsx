@@ -1,11 +1,11 @@
 import { Link, Outlet, useOutlet, useParams } from "react-router-dom";
-import requests from "../Requests";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Book from "./Book";
 import DataLoadingMessage from "./DataLoadingMessage";
 import { leagueHeading, leagueToNationality } from "./utils/leagueName";
 import Breadcrumbs from "./Breadcrumbs";
+import requests from "./utils/requests";
 const LeagueCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [books, setBooks] = useState([]);
