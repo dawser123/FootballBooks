@@ -1,7 +1,6 @@
 import MarginLeftContainer from "./UI/MarginLeftContainer";
 import heroVideoMobile from "../assets/heroVideoMobile.mp4";
 import heroVideoDesktop from "../assets/heroVideoDesktop.mp4";
-import { useState } from "react";
 const Hero = () => {
   return (
     <div className="relative h-72 w-full lg:h-96 ">
@@ -24,9 +23,7 @@ const Hero = () => {
         Your browser does not support the video tag or the file format of this
         video.
       </video>
-
       <div className="absolute h-full w-full bg-gradient-to-r from-primary-color/100 to-primary-color/40"></div>
-
       <MarginLeftContainer>
         <div className="absolute top-[25%] flex flex-col items-start justify-center gap-10 py-3 text-primary-text-color ">
           <h1 className="text-2xl font-bold">

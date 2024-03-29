@@ -24,6 +24,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
   };
   const handleSlideRight = () => {
     slideRight("slice" + rowID, 300);
+    
   };
   return (
     <div id={rowID} className="bg relative">

@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className=" fixed z-40 flex w-full items-center justify-between bg-primary-color px-3 py-3 sm:px-8 ">
         <div className="flex cursor-pointer items-center">
           <Link className="flex items-center justify-center" to="/">
-            <Icon className=" cursor-pointer" />
+            <Icon className="cursor-pointer" />
             <h1 className="text-xl text-primary-text-color ">FootballBooks</h1>
           </Link>
         </div>

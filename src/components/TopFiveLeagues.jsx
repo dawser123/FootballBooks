@@ -1,13 +1,16 @@
-import PremiereLeague from "../assets/Premier-League.png";
-import LaLiga from "../assets/LaLiga.png";
-import SerieA from "../assets/SerieA.png";
-import Bundesliga from "../assets/Bundesliga.png";
-import Ligue1 from "../assets/Ligue1.png";
+import PremiereLeague from "../assets/Premier-League.webp";
+import LaLiga from "../assets/LaLiga.webp";
+import SerieA from "../assets/SerieA.webp";
+import Bundesliga from "../assets/Bundesliga.webp";
+import Ligue1 from "../assets/Ligue1.webp";
 import LeagueIcon from "./LeagueIcon";
 import { Link } from "react-router-dom";
 const TopFiveLeagues = () => {
   return (
-    <div id="topfiveleagues"  className="mx-auto flex w-72 flex-wrap items-center justify-center gap-5 md:w-full ">
+    <div
+      id="topfiveleagues"
+      className="mx-auto flex w-72 flex-wrap items-center justify-center gap-5 md:w-full "
+    >
       <Link to="/premierleague" state={{ category: "Top Five Leagues" }}>
         <LeagueIcon league="premierleague" url={PremiereLeague} />
       </Link>
