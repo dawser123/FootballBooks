@@ -20,7 +20,6 @@ const MainPage = () => {
         title="Newest"
         fetchURL={requests.requestNewest}
       />
-      <div></div>
     </main>
   );
 };

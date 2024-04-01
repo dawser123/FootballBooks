@@ -3,7 +3,7 @@ const Icon = ({ onclick, className }) => {
   return (
     <img
       onClick={onclick}
-      className={`w-16   ${className}`}
+      className={`w-16 h-16   ${className}`}
       src={icon}
       alt="Logo of Football Books"
     />

@@ -37,7 +37,7 @@ const BookRow = ({ rowID, fetchURL, title }) => {
         id={"slice" + rowID}
         className="flex flex-col items-start justify-center overflow-x-hidden sm:pl-8"
       >
-        <div className="  mx-auto h-56 w-full whitespace-nowrap ">
+        <div className="mx-auto h-56 w-full whitespace-nowrap ">
           {!isLoading ? (
             <>
               <MdOutlineKeyboardArrowLeft

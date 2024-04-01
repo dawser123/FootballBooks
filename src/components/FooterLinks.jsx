@@ -9,13 +9,14 @@ const FooterLinks = ({ category }) => {
         </h2>
         <ul className="flex flex-col items-center justify-center gap-2 text-primary-text-color sm:text-center">
           {category.links.map((link, index) => (
-            <Link
-              to={link.to}
-              key={index}
-              className="cursor-pointer list-none duration-300 hover:text-primary-color-hover"
-            >
-              {link.text}
-            </Link>
+            <li key={index}>
+              <Link
+                to={link.to}
+                className="cursor-pointer list-none duration-300 hover:text-primary-color-hover"
+              >
+                {link.text}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
