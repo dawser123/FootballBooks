@@ -9,6 +9,8 @@ import requests from "./utils/requests";
 const LeagueCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState(false);
+
   const { league } = useParams();
   const outlet = useOutlet();
   const navigationData = [
@@ -20,10 +22,16 @@ const LeagueCard = () => {
       "{league}",
       leagueToNationality(league),
     );
-    axios.get(fetchURL).then((response) => {
-      setBooks(response.data.items);
-      setIsLoading(false);
-    });
+    axios
+      .get(fetchURL)
+      .then((response) => {
+        setBooks(response.data.items);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(true);
+      });
   }, [league]);
   if (outlet) {
     return <Outlet />;
@@ -67,7 +75,13 @@ const LeagueCard = () => {
               );
             })
           ) : (
-            <DataLoadingMessage />
+            <>
+              {error ? (
+                <p className="text-primary-text-color">Failed to fetch data from the server.</p>
+              ) : (
+                <DataLoadingMessage />
+              )}
+            </>
           )}
         </div>
         <Outlet />

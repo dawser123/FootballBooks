@@ -12,19 +12,25 @@ import { slideLeft, slideRight } from "./utils/slider";
 const BookRow = ({ rowID, fetchURL, title }) => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
-    axios.get(fetchURL).then((response) => {
-      setBooks(response.data.items);
-      setIsLoading(false);
-    });
+    axios
+      .get(fetchURL)
+      .then((response) => {
+        setBooks(response.data.items);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+      });
   }, [fetchURL]);
   const handleSlideLeft = () => {
     slideLeft("slice" + rowID, 300);
   };
   const handleSlideRight = () => {
     slideRight("slice" + rowID, 300);
-    
   };
   return (
     <div id={rowID} className="bg relative">
@@ -83,7 +89,13 @@ const BookRow = ({ rowID, fetchURL, title }) => {
               />
             </>
           ) : (
-            <DataLoadingMessage />
+            <>
+              {error ? (
+                <p className="text-primary-text-color">Failed to fetch data from the server.</p>
+              ) : (
+                <DataLoadingMessage />
+              )}
+            </>
           )}
         </div>
       </div>
