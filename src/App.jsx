@@ -7,7 +7,7 @@ import Contact from "./views/Contact";
 import Login from "./views/Login";
 import LeagueCard from "./components/LeagueCard";
 import BookDetails from "./components/BookDetails";
-import ScrollTo from './utils/scrollToTop'
+import ScrollTo from './utils/scrollTo'
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedLeagueCard from "./components/ProtectedLeagueCard";
 import ErrorPage from "./components/ErrorPage";
