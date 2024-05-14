@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Modal from "../components/UI/Modal";
-import Button from "../components/UI/Button";
+import Modal from "../ui/Modal";
+import Button from "../ui/Button";
 import ContactInfo from "../components/ContactInfo";
 const Contact = () => {
   const [msgIsSent, setMsgIsSent] = useState(false);

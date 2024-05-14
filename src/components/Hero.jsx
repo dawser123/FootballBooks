@@ -1,4 +1,4 @@
-import MarginLeftContainer from "./ui/MarginLeftContainer";
+import MarginLeftContainer from "../ui/MarginLeftContainer";
 import heroVideoMobile from "../assets/heroVideoMobile.mp4";
 import heroVideoDesktop from "../assets/heroVideoDesktop.mp4";
 const Hero = () => {

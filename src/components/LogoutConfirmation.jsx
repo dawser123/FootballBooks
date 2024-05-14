@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import Button from "./UI/Button";
-import Modal from "./UI/Modal";
+import Button from "../ui/Button";
+import Modal from "../ui/Modal";
 const LogoutConfirmation = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const handleCloseLogoutConfirmation = () => {

@@ -1,9 +1,9 @@
 import { useLocation, } from "react-router-dom";
 import { useContext } from "react";
 import ball from "../assets/ball.jpg";
-import Button from "./UI/Button";
-import FavoriteContext from "./contexts/FavoriteContext";
-import AuthContext from "../components/contexts/AuthContext";
+import FavoriteContext from "../contexts/FavoriteContext";
+import AuthContext from "../contexts/AuthContext";
+import Button from '../ui/Button'
 const BookActionButton = ({ setErrorMsg }) => {
   const location = useLocation();
   const favoriteContext = useContext(FavoriteContext);

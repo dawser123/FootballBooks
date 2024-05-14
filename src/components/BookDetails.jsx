@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import Button from "./UI/Button";
-import Modal from "../components/UI/Modal";
+import Button from "../ui/Button";
+import Modal from "../ui/Modal";
 import BookDescription from "./BookDescription";
 import BookActionButton from "./BookActionButton";
 import BookDetailListItem from "./BookDetailListItem";
-import { leagueHeading } from "./utils/leagueName";
+import { leagueHeading } from "../utils/leagueName";
 import Breadcrumbs from "./Breadcrumbs";
 const BookDetails = () => {
   const location = useLocation();

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import Button from "../components/UI/Button";
+import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../components/contexts/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 const Login = () => {
   const user = useContext(AuthContext);
   const validateEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

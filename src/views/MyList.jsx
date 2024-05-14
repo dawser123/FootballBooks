@@ -1,7 +1,7 @@
 import Book from "../components/Book";
 import { useContext } from "react";
-import FavoriteContext from "../components/contexts/FavoriteContext";
-import AuthContext from "../components/contexts/AuthContext";
+import FavoriteContext from "../contexts/FavoriteContext";
+import AuthContext from "../contexts/AuthContext";
 
 const MyList = () => {
   const favoriteContext = useContext(FavoriteContext);

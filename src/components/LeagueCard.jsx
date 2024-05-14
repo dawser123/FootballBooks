@@ -1,9 +1,9 @@
 import { Link, Outlet, useOutlet, useParams } from "react-router-dom";
 import Book from "./Book";
 import DataLoadingMessage from "./DataLoadingMessage";
-import { leagueHeading, leagueToNationality } from "./utils/leagueName";
+import { leagueHeading, leagueToNationality } from "../utils/leagueName";
 import Breadcrumbs from "./Breadcrumbs";
-import requests from "./api/requests";
+import requests from "../api/requests";
 import useGetData from "../hooks/useGetData";
 const LeagueCard = () => {
   const { league } = useParams();

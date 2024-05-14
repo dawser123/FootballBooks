@@ -1,4 +1,4 @@
-import FavoriteContext from "../components/contexts/FavoriteContext";
+import FavoriteContext from "../contexts/FavoriteContext";
 import ball from "../assets/ball.jpg";
 import { IoMdClose } from "react-icons/io";
 import { useContext } from "react";

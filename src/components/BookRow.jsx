@@ -5,8 +5,8 @@ import {
 import Book from "./Book";
 import { Link } from "react-router-dom";
 import DataLoadingMessage from "./DataLoadingMessage";
-import MarginLeftContainer from "./ui/MarginLeftContainer";
-import { slideLeft, slideRight } from "./utils/slider";
+import MarginLeftContainer from "../ui/MarginLeftContainer";
+import { slideLeft, slideRight } from "../utils/slider";
 import useGetData from "../hooks/useGetData";
 const BookRow = ({ rowID, fetchURL, title }) => {
 const{books,isLoading,error}=useGetData(fetchURL)

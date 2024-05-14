@@ -5,10 +5,10 @@ import Icon from "./Icon";
 import MobileMenu from "./MobileMenu";
 import NavigationLinks from "./NavigationLinks";
 import LogoutConfirmation from "./LogoutConfirmation";
-import Backdrop from "./UI/Backdrop";
-import AuthContext from "./contexts/AuthContext";
-import Modal from "./UI/Modal";
-import Button from "./UI/Button";
+import Backdrop from "../ui/Backdrop";
+import AuthContext from "../contexts/AuthContext";
+import Modal from "../ui/Modal";
+import Button from "../ui/Button";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

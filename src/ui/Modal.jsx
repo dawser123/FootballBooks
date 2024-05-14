@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 const Modal = ({ children, isOpen, onClose, title,className }) => {
   useEffect(() => {
     const body = document.body;

@@ -7,17 +7,17 @@ import Contact from "./views/Contact";
 import Login from "./views/Login";
 import LeagueCard from "./components/LeagueCard";
 import BookDetails from "./components/BookDetails";
-import { FavoriteContextProvider } from "./components/contexts/FavoriteContext";
-import ScrollTo from './components/utils/scrollTo'
-import { AuthContextProvider } from "./components/contexts/AuthContext";
+import ScrollTo from './utils/scrollToTop'
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedLeagueCard from "./components/ProtectedLeagueCard";
 import ErrorPage from "./components/ErrorPage";
+import { FavoriteContextProvider } from "./contexts/FavoriteContext";
+import { AuthContextProvider } from "./contexts/AuthContext";
 function App() {
   return (
     <FavoriteContextProvider>
       <AuthContextProvider>
-        <ScrollTo />
+        <ScrollTo/>
         <Navbar/>
         <div className="mt-[5rem] h-full">
           <Routes>

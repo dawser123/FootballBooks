@@ -1,6 +1,6 @@
-import Modal from "./UI/Modal";
+import Modal from "../ui/Modal"
 import { useForm } from "react-hook-form";
-import Button from "./UI/Button";
+import Button from "../ui/Button";
 const Newsletter = ({
   isSubscriptionSuccess,
   setIsSubscriptionSuccess,

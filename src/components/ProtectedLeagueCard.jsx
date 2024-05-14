@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { leagues } from "./utils/leagueName";
+import { leagues } from "../utils/leagueName";
 import ErrorPage from "./ErrorPage";
 const ProtectedLeagueCard = ({ children }) => {
   const { league } = useParams();

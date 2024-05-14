@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
 import TopFiveLeagues from "../components/TopFiveLeagues";
 import BookRow from "../components/BookRow";
-import requests from "../components/api/requests";
+import requests from "../api/requests";
 const MainPage = () => {
   return (
     <main>

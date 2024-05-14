@@ -2,7 +2,7 @@ import Icon from "./Icon";
 import { useState } from "react";
 import Newsletter from "./Newsletter";
 import FooterLinks from "./FooterLinks";
-import { categories } from "./utils/LinksCategory";
+import { categories } from "../utils/LinksCategory";
 const Footer = () => {
   const [isNewsletterShown, setIsNewsletterShown] = useState(false);
   const [isSubscriptionSuccess, setIsSubscriptionSuccess] = useState(false);
