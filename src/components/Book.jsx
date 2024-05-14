@@ -15,7 +15,7 @@ const Book = ({ title, img, index, deleteBtn, id }) => {
           src={`${img ? img : ball}`}
           alt={title}
         />
-        <div className="absolute left-0 top-0 h-full w-full rounded-xl bg-gradient-to-b opacity-0 duration-300 from-primary-color-hover to-primary-color hover:opacity-90  ">
+        <div className="absolute left-0 top-0 h-full w-full rounded-xl bg-gradient-to-b opacity-0 duration-300 from-primary-color-hover to-primary-color hover:opacity-90">
           <p className=" flex h-full items-end  justify-center whitespace-normal p-1 text-center text-sm text-white">
             {title}
           </p>

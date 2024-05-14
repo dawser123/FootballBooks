@@ -1,38 +1,21 @@
 import { Link, Outlet, useOutlet, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Book from "./Book";
 import DataLoadingMessage from "./DataLoadingMessage";
 import { leagueHeading, leagueToNationality } from "./utils/leagueName";
 import Breadcrumbs from "./Breadcrumbs";
-import requests from "./utils/requests";
+import requests from "./api/requests";
+import useGetData from "../hooks/useGetData";
 const LeagueCard = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [books, setBooks] = useState([]);
-  const [error, setError] = useState(false);
-
   const { league } = useParams();
   const outlet = useOutlet();
   const navigationData = [
     { url: "/#topfiveleagues", title: "Top five leagues" },
   ];
-  useEffect(() => {
-    setIsLoading(true);
-    const fetchURL = requests.requestPopularByLeague.replace(
-      "{league}",
-      leagueToNationality(league),
-    );
-    axios
-      .get(fetchURL)
-      .then((response) => {
-        setBooks(response.data.items);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setError(true);
-      });
-  }, [league]);
+  const fetchURL = requests.requestPopularByLeague.replace(
+    "{league}",
+    leagueToNationality(league),
+  );
+  const { books, isLoading, error } = useGetData(fetchURL);
   if (outlet) {
     return <Outlet />;
   }
@@ -77,7 +60,9 @@ const LeagueCard = () => {
           ) : (
             <>
               {error ? (
-                <p className="text-primary-text-color">Failed to fetch data from the server.</p>
+                <p className="text-primary-text-color">
+                  Failed to fetch data from the server.
+                </p>
               ) : (
                 <DataLoadingMessage />
               )}

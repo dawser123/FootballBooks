@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -7,25 +5,11 @@ import {
 import Book from "./Book";
 import { Link } from "react-router-dom";
 import DataLoadingMessage from "./DataLoadingMessage";
-import MarginLeftContainer from "./UI/MarginLeftContainer";
+import MarginLeftContainer from "./ui/MarginLeftContainer";
 import { slideLeft, slideRight } from "./utils/slider";
+import useGetData from "../hooks/useGetData";
 const BookRow = ({ rowID, fetchURL, title }) => {
-  const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(fetchURL)
-      .then((response) => {
-        setBooks(response.data.items);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-      });
-  }, [fetchURL]);
+const{books,isLoading,error}=useGetData(fetchURL)
   const handleSlideLeft = () => {
     slideLeft("slice" + rowID, 300);
   };
@@ -91,7 +75,9 @@ const BookRow = ({ rowID, fetchURL, title }) => {
           ) : (
             <>
               {error ? (
-                <p className="text-primary-text-color">Failed to fetch data from the server.</p>
+                <p className="text-primary-text-color">
+                  Failed to fetch data from the server.
+                </p>
               ) : (
                 <DataLoadingMessage />
               )}
