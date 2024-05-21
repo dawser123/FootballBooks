@@ -10,9 +10,9 @@ export const categories = [
   {
     title: "About Us",
     links: [
-      { text: "Company Overview", to: "/" },
-      { text: "Mission and Values", to: "/" },
-      { text: "Our Team", to: "/" },
+      { text: "Company Overview", to: "/aboutus" },
+      { text: "Mission and Values", to: "/aboutus" },
+      { text: "Our Team", to: "/aboutus" },
     ],
   },
 ];

@@ -13,6 +13,7 @@ import ProtectedLeagueCard from "./components/ProtectedLeagueCard";
 import ErrorPage from "./components/ErrorPage";
 import { FavoriteContextProvider } from "./contexts/FavoriteContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import Aboutus from "./views/Aboutus";
 function App() {
   return (
     <FavoriteContextProvider>
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<MainPage />}></Route>
             <Route path="/my-list" element={<MyList />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/aboutus" element={<Aboutus />}></Route>
             <Route
               path="/login"
               element={
