@@ -4,7 +4,7 @@ import { FaAngleUp } from "react-icons/fa";
 const BookDescription = ({ bookDetails }) => {
   const [showMoreText, setShowMoreText] = useState(false);
   const truncateString = (str, num) => {
-    if (str.length > num && !showMoreText) {
+    if (str?.length > num && !showMoreText) {
       return str.slice(0, num) + "...";
     } else {
       return str;
@@ -19,14 +19,22 @@ const BookDescription = ({ bookDetails }) => {
         <span className="font-bold">{bookDetails.title} </span>
         <p className="font-bold ">
           Author:
-          <span className="ml-2 font-normal">{bookDetails.author[0]}</span>
+          {bookDetails.author ? (
+            <span className="ml-2 font-normal">{bookDetails.author[0]}</span>
+          ) : (
+            <span className="ml-2 font-normal">
+              No author information available
+            </span>
+          )}
         </p>
         <div className="font-bold">
           Description:
           <p className="mt-2  font-normal">
-            {truncateString(bookDetails.description, 200)}
+            {bookDetails.description
+              ? truncateString(bookDetails.description, 200)
+              : "Description not available"}
           </p>
-          {bookDetails.description.length > 200 && (
+          {bookDetails.description?.length > 200 && (
             <button className="mt-2 w-full" onClick={toggleShowMoreText}>
               {showMoreText ? (
                 <div className="flex items-center justify-center gap-2">
