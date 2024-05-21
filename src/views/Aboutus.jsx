@@ -4,7 +4,7 @@ const Aboutus = () => {
       <h2 className="mb-5 py-10 text-center text-2xl text-primary-text-color">
         About FootballBooks
       </h2>
-      <div className="mx-auto flex flex-col items-center justify-center gap-10 pb-28 text-primary-text-color md:px-8 lg:max-w-[80%] ">
+      <div className="mx-auto flex flex-col items-start justify-center gap-10 pb-28 text-primary-text-color md:px-8 md:max-w-[70%]">
         <div>
           <h3 className="font-bold my-2">Explore exclusive football content</h3>
           <p>
