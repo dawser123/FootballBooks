@@ -23,15 +23,9 @@ const FootballBooksStaffInfo = () => {
               </p>
             </div>
           </div>
-    
-    
-    
-
-     
         </div>
       ))}
     </>
   );
 };
-
 export default FootballBooksStaffInfo;

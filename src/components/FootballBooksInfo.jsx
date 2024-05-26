@@ -19,5 +19,4 @@ const FootballBooksInfo = () => {
     </div>
   );
 };
-
 export default FootballBooksInfo;

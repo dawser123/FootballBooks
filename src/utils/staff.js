@@ -28,7 +28,6 @@ const staff = [
     img: Emma,
     text: "Emma manages the company finances with precision and care.",
   },
-
   {
     name: "Olivia",
     role: "COO",
@@ -36,5 +35,4 @@ const staff = [
     text: "Olivia oversees the company's day-to-day operations, ensuring everything runs smoothly.",
   },
 ];
-
 export default staff;
