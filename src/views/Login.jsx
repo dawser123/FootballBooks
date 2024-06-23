@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 const Login = () => {
   const user = useContext(AuthContext);
   const validateEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -18,7 +19,7 @@ const Login = () => {
     },
   });
   const onSubmit = (data) => {
-    navigate("/");
+    navigate(location?.state?.prevUrl, { state: location.state });
     user.setUser(data);
     user.setLoggedIn(true);
   };
@@ -80,4 +81,3 @@ const Login = () => {
   );
 };
 export default Login;
-// komunukat czy na pewno chcesz sie wylogowac!!!!!!!

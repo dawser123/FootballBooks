@@ -44,7 +44,13 @@ const BookDetails = () => {
           isOpen={errorMsg}
         >
           <div className="flex items-center justify-center gap-3 px-5">
-            <Link to="/login">
+            <Link
+              to="/login"
+              state={{
+                prevUrl: location.pathname,
+                ...location.state, 
+              }}
+            >
               <Button
                 onClick={handleModal}
                 className="w-48 rounded-2xl px-10 py-3 sm:max-w-32"
