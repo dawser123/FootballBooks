@@ -1,34 +1,15 @@
+import NavItem from "./NavItem";
 import { NavLink } from "react-router-dom";
-
 const NavLinksList = () => {
   return (
     <>
-      <NavLink
-        className={({ isActive }) =>
-        isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
-      }
-        to="/"
-      >
-        Home
+      <NavItem to={"/"}>Home</NavItem>
+      <NavLink to={"/search"} className="cursor-pointer text-2xl">
+        Search
       </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
-        }
-        to="/my-list"
-      >
-        My list
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-        isActive ? "text-primary-color-hover cursor-default" : "text-primary-text-color hover:text-opacity-70"
-      }
-        to="/contact"
-      >
-        Contact
-      </NavLink>
+      <NavItem to="/my-list">My list</NavItem>
+      <NavItem to={"/contact"}>Contact</NavItem>
     </>
   );
 };
-
 export default NavLinksList;

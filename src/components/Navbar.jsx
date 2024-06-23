@@ -9,6 +9,7 @@ import Backdrop from "../ui/Backdrop";
 import AuthContext from "../contexts/AuthContext";
 import Modal from "../ui/Modal";
 import Button from "../ui/Button";
+import NavItem from "./NavItem";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,15 +27,15 @@ const Navbar = () => {
     navigate("/");
     user.setUser({});
     user.setLoggedIn(false);
-    setIsModalOpen(false)
-    setIsModalConfirmationOpen(true)
+    setIsModalOpen(false);
+    setIsModalConfirmationOpen(true);
   };
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
   return (
     <>
-      <div className=" fixed z-40 flex w-full items-center justify-between bg-primary-color px-3 py-3 sm:px-8 ">
+      <header className=" fixed z-40 flex w-full items-center justify-between bg-primary-color px-3 py-3 sm:px-8 ">
         <div className="flex cursor-pointer items-center">
           <Link className="flex items-center justify-center" to="/">
             <Icon className="cursor-pointer" />
@@ -53,15 +54,10 @@ const Navbar = () => {
               Logout
             </button>
           ) : (
-            <Link
-              className="text-2xl text-primary-text-color hover:text-opacity-70  "
-              to="/login"
-            >
-              Login
-            </Link>
+            <NavItem to={"/login"}>Login</NavItem>
           )}
         </div>
-      </div>
+      </header>
       <MobileMenu isOpen={isOpen} />
       {isModalOpen ? (
         <Modal
@@ -74,10 +70,7 @@ const Navbar = () => {
             <Button onClick={confirmLogout} className="rounded-xl px-3 py-2">
               Logout
             </Button>
-            <Button
-              onClick={handleCloseModal}
-              className="rounded-xl px-3 py-2"
-            >
+            <Button onClick={handleCloseModal} className="rounded-xl px-3 py-2">
               Cancel
             </Button>
           </div>
