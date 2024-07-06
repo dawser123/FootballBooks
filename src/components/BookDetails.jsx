@@ -31,7 +31,7 @@ const BookDetails = () => {
         navigationData={navigationData}
         pathName={location.state.pathName}
       />
-      ;
+      
       <div className="mt-10 flex flex-col items-center justify-center">
         <BookActionButton setErrorMsg={setErrorMsg} />
         <BookDescription bookDetails={location.state} />
