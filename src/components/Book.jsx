@@ -2,13 +2,13 @@ import FavoriteContext from "../contexts/FavoriteContext";
 import ball from "../assets/ball.jpg";
 import { IoMdClose } from "react-icons/io";
 import { useContext } from "react";
-const Book = ({ title, img, index, deleteBtn, id }) => {
+const Book = ({ title, img, deleteBtn, id }) => {
   const favoriteContext = useContext(FavoriteContext);
   const deleteHandler = () => {
     favoriteContext.removeFromFavorites({ id });
   };
   return (
-    <div className={`inline-block ${index !== 0 && "mx-1"}`}>
+    <>
       <div className="relative h-[200px] min-w-[150px] max-w-[150px] cursor-pointer ">
         <img
           className="h-full w-full overflow-hidden rounded-xl  text-primary-text-color  "
@@ -27,7 +27,7 @@ const Book = ({ title, img, index, deleteBtn, id }) => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Book;
