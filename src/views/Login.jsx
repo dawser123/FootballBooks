@@ -49,7 +49,7 @@ const Login = () => {
               })}
             />
             {errors.email && (
-              <p className="m-2 font-bold text-red-400">
+              <p id='email-error' className="m-2 font-bold text-red-400">
                 {errors.email.message}
               </p>
             )}
@@ -67,7 +67,7 @@ const Login = () => {
               })}
             />
             {errors.password && (
-              <p className="m-2 text-left font-bold text-red-400">
+              <p id='password-error' className="m-2 text-left font-bold text-red-400">
                 {errors.password.message}
               </p>
             )}
