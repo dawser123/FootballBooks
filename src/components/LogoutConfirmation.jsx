@@ -10,6 +10,7 @@ const LogoutConfirmation = ({ isOpen, onClose }) => {
   return (
     <>
       <Modal
+        id="confirmation-logout-msg"
         isOpen={isOpen}
         className="px-2 "
         title="You have been logged out successfully."

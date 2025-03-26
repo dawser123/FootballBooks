@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-const Modal = ({ children, isOpen, onClose, title,className }) => {
+const Modal = ({ children, isOpen, onClose, title,className,id }) => {
   useEffect(() => {
     const body = document.body;
     body.style.overflow = isOpen ? "hidden" : "auto";
@@ -24,7 +24,7 @@ const Modal = ({ children, isOpen, onClose, title,className }) => {
           className={`${className} fixed left-1/2 top-[30%] z-50 h-64 w-[90%]  -translate-x-1/2 -translate-y-1/2 transform rounded-xl bg-secondary-color md:top-[50%] md:max-w-[60%] `}
         >
           <div className="flex h-full flex-col items-center justify-center text-white">
-            <p className="py-5 text-lg font-bold text-center">{title}</p>
+            <p id={id} className="py-5 text-lg font-bold text-center">{title}</p>
             {children}
           </div>
         </div>
