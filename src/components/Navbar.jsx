@@ -13,7 +13,7 @@ import NavItem from "./NavItem";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalConfirmatioOpen, setIsModalConfirmationOpen] = useState(false);
+  const [isModalConfirmationOpen, setIsModalConfirmationOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const user = useContext(AuthContext);
@@ -48,6 +48,7 @@ const Navbar = () => {
           {isOpen && <Backdrop onClick={() => setIsOpen(false)} />}
           {user.user.email ? (
             <button
+            id='logout-btn'
               className="text-2xl text-primary-text-color hover:text-opacity-70"
               onClick={handleModal}
             >
@@ -67,17 +68,17 @@ const Navbar = () => {
           title={"Are you sure you want to log out ?"}
         >
           <div className="flex gap-2 text-lg font-bold">
-            <Button onClick={confirmLogout} className="rounded-xl px-3 py-2">
+            <Button id='modal-logout-btn' onClick={confirmLogout} className="rounded-xl px-3 py-2">
               Logout
             </Button>
-            <Button onClick={handleCloseModal} className="rounded-xl px-3 py-2">
+            <Button id='modal-cancel-btn' onClick={handleCloseModal} className="rounded-xl px-3 py-2">
               Cancel
             </Button>
           </div>
         </Modal>
       ) : (
         <LogoutConfirmation
-          isOpen={isModalConfirmatioOpen}
+          isOpen={isModalConfirmationOpen}
           onClose={setIsModalConfirmationOpen}
         />
       )}
