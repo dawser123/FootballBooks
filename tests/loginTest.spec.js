@@ -1,12 +1,44 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('Login validation', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
- await page.getByRole('link', { name: 'Login' }).click();
-  await expect(page.getByText('Log inSubmit')).toBeVisible();
-  await expect(page.getByPlaceholder('Email address')).toHaveValue('test@gmail.com');
-  await expect(page.getByPlaceholder('Password')).toHaveValue('1234567');
-  await expect(page.getByRole('button', { name: 'Submit' })).toBeVisible();
-  await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page.getByRole('button', { name: 'Logout' })).toBeVisible();
+test.describe("user Login to footballBooks", () => {
+  test("successful login with correct credentials", async ({ page }) => {
+    //Arrange
+    await page.goto("/");
+    const loginUserName = "test@gmail.com";
+    const loginUserPassword = "1234567";
+    //Act
+    await page.getByRole("link", { name: "Login" }).click();
+    await page.getByPlaceholder("Email address").fill(loginUserName);
+    await page.getByPlaceholder("Password").fill(loginUserPassword);
+    await page.getByRole("button", { name: "Submit" }).click();
+    //Assert
+    await expect(page.getByRole("button", { name: "Logout" })).toBeVisible();
+  });
+
+  test("unsuccessful login with invalid mail", async ({ page }) => {
+    //Arrange
+    await page.goto("/");
+    const loginUserName = "testgmail.com";
+    const loginUserPassword = "1234567";
+    //Act
+    await page.getByRole("link", { name: "Login" }).click();
+    await page.getByPlaceholder("Email address").fill(loginUserName);
+    await page.getByPlaceholder("Password").fill(loginUserPassword);
+    await page.getByRole("button", { name: "Submit" }).click();
+    //Assert
+    await expect(page.locator('#email-error')).toHaveText('Enter valid email and try again.');
+  });
+  test("unsuccessful login with invalid password", async ({ page }) => {
+    //Arrange
+    await page.goto("/");
+    const loginUserName = "test@gmail.com";
+    const loginUserPassword = "12345";
+    //Act
+    await page.getByRole("link", { name: "Login" }).click();
+    await page.getByPlaceholder("Email address").fill(loginUserName);
+    await page.getByPlaceholder("Password").fill(loginUserPassword);
+    await page.getByRole("button", { name: "Submit" }).click();
+    //Assert
+    await expect(page.locator('#password-error')).toHaveText('Password must be at least 6 characters long');
+  });
 });
