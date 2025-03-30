@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("user logout from footballBooks", () => {
-  test.only("successful logout ", async ({ page }) => {
+  test("successful logout ", async ({ page }) => {
     //Arrange
     await page.goto("/");
     const loginUserName = "test@gmail.com";

@@ -1,44 +1,41 @@
 import { test, expect } from "@playwright/test";
-
+import { loginData } from "../test-data.js/login-data";
+import { LoginPage } from "../pages/login.page";
 test.describe("user Login to footballBooks", () => {
-  test("successful login with correct credentials", async ({ page }) => {
-    //Arrange
+  let loginPage
+  test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    const loginUserName = "test@gmail.com";
-    const loginUserPassword = "1234567";
-    //Act
-    await page.getByRole("link", { name: "Login" }).click();
-    await page.getByPlaceholder("Email address").fill(loginUserName);
-    await page.getByPlaceholder("Password").fill(loginUserPassword);
-    await page.getByRole("button", { name: "Submit" }).click();
-    //Assert
-    await expect(page.getByRole("button", { name: "Logout" })).toBeVisible();
+    loginPage = new LoginPage(page);
   });
-
-  test("unsuccessful login with invalid mail", async ({ page }) => {
+  test("successful login with correct credentials", async () => {
     //Arrange
-    await page.goto("/");
-    const loginUserName = "testgmail.com";
-    const loginUserPassword = "1234567";
+    const emailInput = loginData.valid.userEmail;
+    const userPassword = loginData.valid.password;
     //Act
-    await page.getByRole("link", { name: "Login" }).click();
-    await page.getByPlaceholder("Email address").fill(loginUserName);
-    await page.getByPlaceholder("Password").fill(loginUserPassword);
-    await page.getByRole("button", { name: "Submit" }).click();
+    await loginPage.login(emailInput, userPassword);
     //Assert
-    await expect(page.locator('#email-error')).toHaveText('Enter valid email and try again.');
+    await expect(loginPage.logoutButton).toBeVisible();
   });
-  test("unsuccessful login with invalid password", async ({ page }) => {
+  test("unsuccessful login with invalid mail", async () => {
     //Arrange
-    await page.goto("/");
-    const loginUserName = "test@gmail.com";
-    const loginUserPassword = "12345";
+    const emailInput = loginData.invalid.userEmail;
+    const userPassword = loginData.valid.password;
     //Act
-    await page.getByRole("link", { name: "Login" }).click();
-    await page.getByPlaceholder("Email address").fill(loginUserName);
-    await page.getByPlaceholder("Password").fill(loginUserPassword);
-    await page.getByRole("button", { name: "Submit" }).click();
+    await loginPage.login(emailInput, userPassword);
     //Assert
-    await expect(page.locator('#password-error')).toHaveText('Password must be at least 6 characters long');
+    await expect(loginPage.emailError).toHaveText(
+      "Enter valid email and try again.",
+    );
+  });
+  test("unsuccessful login with invalid password", async () => {
+    //Arrange
+    const emailInput = loginData.valid.userEmail;
+    const userPassword = loginData.invalid.password;
+    //Act
+    await loginPage.login(emailInput, userPassword);
+    //Assert
+    await expect(loginPage.passwordError).toHaveText(
+      "Password must be at least 6 characters long",
+    );
   });
 });
