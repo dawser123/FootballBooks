@@ -1,19 +1,25 @@
 import { test, expect } from "@playwright/test";
-
+import { loginData } from "../test-data.js/login-data";
+import { LoginPage } from "../pages/login.page";
+import { LogoutPage } from "../pages/logout.page";
 test.describe("user logout from footballBooks", () => {
-  test("successful logout ", async ({ page }) => {
-    //Arrange
+  let loginPage;
+  let logoutPage;
+  test.beforeEach(async ({ page }) => {
+    const emailInput = loginData.valid.userEmail;
+    const userPassword = loginData.valid.password;
+    loginPage = new LoginPage(page);
+
     await page.goto("/");
-    const loginUserName = "test@gmail.com";
-    const loginUserPassword = "1234567";
+    await loginPage.login(emailInput, userPassword);
+    logoutPage = new LogoutPage(page);
+  });
+  test("successful logout ", async () => {
     //Act
-    await page.getByRole("link", { name: "Login" }).click();
-    await page.getByPlaceholder("Email address").fill(loginUserName);
-    await page.getByPlaceholder("Password").fill(loginUserPassword);
-    await page.getByRole("button", { name: "Submit" }).click();
-    await page.locator("#logout-btn").click();
-    await page.locator("#modal-logout-btn").click();
+   await logoutPage.logout()
     //Assert
-    await expect(page.locator('#confirmation-logout-msg')).toHaveText('You have been logged out successfully.')
+    await expect(logoutPage.confirmationLogoutMessage).toHaveText(
+      "You have been logged out successfully.",
+    );
   });
 });
