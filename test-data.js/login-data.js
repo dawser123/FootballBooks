@@ -4,7 +4,7 @@ export const loginData = {
     password: "1234567",
   },
   invalid: {
-    userEmail: "testgmail.com",
+    userEmail: "test@gmail",
     password: "1234",
   },
   errorMessage: {
