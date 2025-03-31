@@ -23,8 +23,7 @@ test.describe("user Login to footballBooks", () => {
     //Act
     await loginPage.login(emailInput, userPassword);
     //Assert
-    await expect(loginPage.emailError).toHaveText(
-      "Enter valid email and try again.",
+    await expect(loginPage.emailError).toHaveText(loginData.errorMessage.invalidEmail
     );
   });
   test("unsuccessful login with invalid password", async () => {
@@ -35,7 +34,7 @@ test.describe("user Login to footballBooks", () => {
     await loginPage.login(emailInput, userPassword);
     //Assert
     await expect(loginPage.passwordError).toHaveText(
-      "Password must be at least 6 characters long",
+     loginData.errorMessage.invalidPassword
     );
   });
 });

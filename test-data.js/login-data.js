@@ -7,4 +7,8 @@ export const loginData = {
     userEmail: "testgmail.com",
     password: "1234",
   },
+  errorMessage: {
+    invalidEmail:'Enter valid email and try again.',
+    invalidPassword: "Password must be at least 6 characters long",
+  },
 };
