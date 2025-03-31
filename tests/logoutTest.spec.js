@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { loginData } from "../test-data.js/login-data";
 import { LoginPage } from "../pages/login.page";
 import { LogoutPage } from "../pages/logout.page";
+import { logoutData } from "../test-data.js/logout-data";
 test.describe("user logout from footballBooks", () => {
   let loginPage;
   let logoutPage;
@@ -19,7 +20,7 @@ test.describe("user logout from footballBooks", () => {
    await logoutPage.logout()
     //Assert
     await expect(logoutPage.confirmationLogoutMessage).toHaveText(
-      "You have been logged out successfully.",
+      logoutData.logoutConfirmationText
     );
   });
 });
