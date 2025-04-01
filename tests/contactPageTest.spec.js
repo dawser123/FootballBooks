@@ -31,11 +31,11 @@ test('should send a message successfully', async () => {
 test('should fail to send a message when too short', async () => {
    //Arrange
    const loginUserName = loginData.valid.userEmail
-   const validMessage = contactData.examples.invalidMessage
+   const invalidMessage = contactData.examples.invalidMessage
    //Act
    await contactPage.contactLink.click();
    await contactPage.contactName.fill(loginUserName);
-   await contactPage.message.fill(validMessage);
+   await contactPage.message.fill(invalidMessage);
    await contactPage.submitButton.click();
    //Assert
    await expect(contactPage.messageTooShort).toBeVisible();
