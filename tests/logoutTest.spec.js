@@ -20,7 +20,7 @@ test.describe("user logout from footballBooks", () => {
    await logoutPage.logout()
     //Assert
     await expect(logoutPage.confirmationLogoutMessage).toHaveText(
-      logoutData.logoutConfirmationText
+      logoutData.messages.logoutConfirmationText
     );
   });
 });
