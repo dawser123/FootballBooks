@@ -1,40 +1,44 @@
 import { test, expect } from '@playwright/test';
+import { loginData } from '../test-data.js/login-data';
+import { contactData } from '../test-data.js/contact-data';
+import { ContactPage } from '../pages/contact.page';
 
 test.describe('user navigate to contact page',  () => {
-test('successful navigate to Contact page ', async ({page}) => {
+  let contactPage
+  test.beforeEach(async({page})=>{
+    contactPage=new ContactPage(page)
+    await page.goto('/');
+  })
+test('should navigate to Contact page successfully ', async () => {
   //Arrange 
-  await page.goto('/');
   //Act
-  await page.getByRole('link', { name: 'Contact' }).click();
+  await contactPage.contactLink.click();
   //Assert
-  await expect(page.getByRole('heading', { name: 'Contact us' })).toBeVisible();
+  await expect(contactPage.contactHeading).toBeVisible();
  })
-test('successful message sent  ', async ({page}) => {
+test('should send a message successfully', async () => {
   //Arrange
-  await page.goto('/');
-  const loginUserName = "test@gmail.com";
-  const userMessage = "12345678910";
+  const loginUserName = loginData.valid.userEmail
+  const validMessage =contactData.examples.validMessage
   //Act
-  await page.getByRole('link', { name: 'Contact' }).click();
-  await page.getByPlaceholder('Name').fill(loginUserName);
-  await page.getByPlaceholder('Your message').fill(userMessage);
-  await page.getByRole('button', { name: 'Submit' }).click();
+  await contactPage.contactLink.click();
+  await contactPage.contactName.fill(loginUserName);
+  await contactPage.message.fill(validMessage);
+  await contactPage.submitButton.click();
   //Assert
-  await expect(page.getByText('Your message was sent successfully !')).toBeVisible();
-
+  await expect(contactPage.messageSent).toBeVisible();
  })
-test('unsuccessful message sent  ', async ({page}) => {
+test('should fail to send a message when too short', async () => {
    //Arrange
-   await page.goto('/');
-   const loginUserName = "test@gmail.com";
-   const userMessage = "12345";
+   const loginUserName = loginData.valid.userEmail
+   const validMessage = contactData.examples.invalidMessage
    //Act
-   await page.getByRole('link', { name: 'Contact' }).click();
-   await page.getByPlaceholder('Name').fill(loginUserName);
-   await page.getByPlaceholder('Your message').fill(userMessage);
-   await page.getByRole('button', { name: 'Submit' }).click();
+   await contactPage.contactLink.click();
+   await contactPage.contactName.fill(loginUserName);
+   await contactPage.message.fill(validMessage);
+   await contactPage.submitButton.click();
    //Assert
-   await expect(page.getByText('Your message must contain at least 10 characters')).toBeVisible();
+   await expect(contactPage.messageTooShort).toBeVisible();
  })
 
 
