@@ -16,11 +16,10 @@ const Footer = () => {
           </h2>
           <ul>
             <li
-              aria-label="Open Newsletter"
               className="cursor-pointer list-none text-primary-text-color duration-300 hover:text-primary-color-hover"
               onClick={() => setIsNewsletterShown(true)}
             >
-              Subscribe to Newsletter
+              <button>Subscribe to Newsletter</button>
             </li>
           </ul>
         </div>
