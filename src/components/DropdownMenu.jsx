@@ -20,12 +20,16 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
       onClick={() => {
         setIsOpen((prevState) => !prevState);
       }}
-      className="z-50 cursor-pointer text-primary-text-color duration-300 md:hidden "
+      className="z-50 cursor-pointer flex justify-center items-center  text-primary-text-color duration-300 md:hidden "
     >
       {!isOpen ? (
-        <FaArrowDown className="text-2xl" />
+        <button>
+          <FaArrowDown className="text-2xl" />
+        </button>
       ) : (
-        <FaArrowUp className="text-2xl" />
+        <button>
+          <FaArrowUp className="text-2xl" />
+        </button>
       )}
     </div>
   );
