@@ -26,9 +26,9 @@ const Hero = () => {
       <div className="absolute h-full w-full bg-gradient-to-r from-primary-color/100 to-primary-color/40"></div>
       <MarginLeftContainer>
         <div className="absolute top-[25%] flex flex-col items-start justify-center gap-10 py-3 text-primary-text-color ">
-          <h1 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold">
             Welcome to our football books library!
-          </h1>
+          </h2>
           <p className="text-lg">
             Check out our collection of the latest books about your favorite
             football clubs
