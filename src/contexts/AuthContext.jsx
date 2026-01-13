@@ -4,10 +4,10 @@ const AuthContext = createContext({
   logIn: () => {},
   logOut: () => {},
 });
-const userFromLocalStorege = JSON.parse(localStorage.getItem("user") || "{}");
+const userFromLocalStorage = JSON.parse(localStorage.getItem("user") || "{}");
 export const AuthContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(userFromLocalStorege);
+  const [user, setUser] = useState(userFromLocalStorage);
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
