@@ -32,7 +32,7 @@ const BookDetails = () => {
         pathName={location.state.pathName}
       />
       
-      <div className="mt-10 flex flex-col items-center justify-center">
+      <div className="mt-10 flex flex-col items-center justify-center mx-auto max-w-2xl">
         <BookActionButton setErrorMsg={setErrorMsg} />
         <BookDescription bookDetails={location.state} />
         <BookDetailListItem bookDetails={location.state} />
